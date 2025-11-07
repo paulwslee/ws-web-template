@@ -1,11 +1,22 @@
 import Image from 'next/image';
 
-import Button from '@/components/Button';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <div className="h-screen flex items-center justify-center bg-gray-100">
+          <div className="animate-in zoom-in-95 duration-500 bg-white p-10 rounded-lg shadow-lg text-center">
+            <h2 className="text-3xl font-semibold mb-2">Zoom In!</h2>
+            <p className="text-gray-500">살짝 확대되며 나타나는 효과입니다.</p>
+          </div>
+        </div>
+        <div className="h-screen flex items-center justify-center bg-gray-100">
+          <Button className="animate-in slide-in-from-bottom-5 fade-in-0">
+            🚀 부드럽게 등장하는 버튼
+          </Button>
+        </div>
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -53,7 +64,7 @@ export default function Home() {
             Deploy Now
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -63,8 +74,65 @@ export default function Home() {
         </div>
         <h1>Hello</h1>
         <Button /> {/* ← 이렇게 사용하면 경고 사라짐 */}
+        <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-br from-blue-500 to-purple-600 text-white">
+          <h1 className="text-4xl font-bold">🎉 Tailwind v4 적용 완료!</h1>
+          <p className="mt-4 text-lg opacity-80">This page is styled with Tailwind CSS 4.</p>
+        </div>
+        <div className="min-h-screen flex items-center justify-center p-6">
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle className="text-xl">shadcn/ui 설치 완료 ✨</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">이름</Label>
+                <Input id="name" placeholder="홍길동" />
+              </div>
+
+              <div className="space-y-2">
+                <Label>카테고리</Label>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="선택하세요" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">옵션 A</SelectItem>
+                    <SelectItem value="b">옵션 B</SelectItem>
+                    <SelectItem value="c">옵션 C</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="flex gap-2">
+                <Button>기본 버튼</Button>
+                <Button variant="outline">아웃라인</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="h-screen flex items-center justify-center">
+          <Button className="animate-in slide-in-from-bottom fade-in-0">
+            부드럽게 등장하는 버튼
+          </Button>
+        </div>
+        <div className="h-screen flex items-center justify-center bg-gray-50">
+          <div className="animate-in fade-in-0 slide-in-from-bottom-5 p-8 bg-white rounded-xl shadow-md">
+            <h1 className="text-2xl font-bold mb-2 text-center">🎉 Tailwind Animate Test</h1>
+            <p className="text-gray-600 text-center">아래에서 위로 슬라이드하며 페이드인!</p>
+          </div>
+        </div>
       </main>
     </div>
   );
 }
 // Completed Initialize
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';

@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WS Web Template — v4.5 (Next 16 + Tailwind v4 + shadcn/ui)
 
-## Getting Started
+> Production-ready starter for modern React apps.
 
-First, run the development server:
+## ✨ Stack
+
+- Next.js 16 (App Router, Turbopack)
+- Tailwind CSS v4 (`@tailwindcss/postcss`)
+- shadcn/ui (button, card, input, select…)
+- `tailwindcss-animate` (transitions for modals/menus/toasts)
+
+## 🚀 Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📁 Included
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/components/ui/\* — shadcn components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/lib/utils.ts — cn() helper
 
-## Learn More
+app/globals.css — v4 style
 
-To learn more about Next.js, take a look at the following resources:
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&:is(.dark \*));
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+postcss.config.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+module.exports = {
+plugins: { "@tailwindcss/postcss": {}, autoprefixer: {} },
+};
 
-## Deploy on Vercel
+🧩 Add more components
+npx shadcn@latest add accordion alert-dialog badge dropdown-menu form sonner
+🧪 Smoke Test
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Page renders with card/button/input/select
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+animate-in fade-in-0 slide-in-from-bottom-5 works
+
+HMR applies instantly on save
+
+🛠 Scripts
+
+dev — run local dev server
+
+build — production build
+
+start — run built app
+
+❗ Troubleshooting
+
+PostCSS error (tailwindcss plugin moved)
+Install and set @tailwindcss/postcss in postcss.config.js.
+
+Module not found @/components/ui/Button
+Use lowercase path and named import:
+import { Button } from "@/components/ui/button"
+
+Unknown plugin tw-animate-css
+Remove it. Use "tailwindcss-animate" instead and npm i -D tailwindcss-animate.
